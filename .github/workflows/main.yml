@@ -1,31 +1,37 @@
-name: Build & Test
+name: E2E-testing
 on: [push]
 jobs:
-  test:
-    name: Build and test on Node ${{ matrix.node }} and ${{ matrix.os }}
-
+  e2e:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         node: ['14.x']
         os: [ubuntu-latest]
-
+    services:
+      postgres:
+        image: postgres:12.1
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: trpcdb
+        ports:
+          - 5432:5432
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node }}
+      - uses: microsoft/playwright-github-action@v1
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+      # - name: Install deps and build (with cache)
+      #   uses: bahmutov/npm-install@v1
+      - run: yarn install
 
-      - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
-
-      - uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-          directory: ./packages
+      - run: yarn build
+        env:
+          DATABASE_URL: postgresql://postgres:@localhost:5432/trpcdb
+      - run: yarn lint
+      - run: yarn test-start
+        env:
+          DATABASE_URL: postgresql://postgres:@localhost:5432/trpcdb
+      - run: yarn test-dev
+        env:
+          DATABASE_URL: postgresql://postgres:@localhost:5432/trpcdb
