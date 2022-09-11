@@ -1,22 +1,23 @@
 {
-  "extends": "./tsconfig.build.json",
-  "include": ["packages", "types", "scripts", "examples", "rollup.config.ts"],
   "compilerOptions": {
-    "allowJs": false,
-    "baseUrl": ".",
-    "typeRoots": ["./node_modules/@types", "./types"],
-    "paths": {
-      "@trpc/server": ["packages/server/src"],
-      "@trpc/react": ["packages/react/src"],
-      "@trpc/client": ["packages/client/src"],
-      "@trpc/next": ["packages/next/src"],
-      "$test/*": ["test/*"]
-    }
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "types": ["@types/jest", "jest-playwright-preset"],
+    "baseUrl": "./src",
+    "incremental": true
   },
-  "ts-node": {
-    "swc": true,
-    "compilerOptions": {
-      "module": "commonjs"
-    }
-  }
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
