@@ -32,7 +32,7 @@ const ee = new MyEventEmitter();
 const currentlyTyping: Record<string, { lastTyped: Date }> =
   Object.create(null);
 
-// every 1s, clear old "isTyping"
+// every 3s, clear old "isTyping"
 const interval = setInterval(() => {
   let updated = false;
   const now = Date.now();
