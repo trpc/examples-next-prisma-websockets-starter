@@ -2,6 +2,10 @@ import { createContext } from './context';
 import { appRouter } from './routers/_app';
 import { applyWSSHandler } from '@trpc/server/adapters/ws';
 import ws from 'ws';
+import { loadEnvConfig } from "@next/env";
+
+const root = process.cwd();
+loadEnvConfig(root, process.env.NODE_ENV !== "production");
 
 const wss = new ws.Server({
   port: 3001,
