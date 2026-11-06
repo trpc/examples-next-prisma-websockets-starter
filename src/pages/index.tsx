@@ -3,14 +3,14 @@ import {
   AlertAction,
   AlertDescription,
   AlertTitle,
-} from '@shared/ui/components/alert';
-import { Avatar, AvatarFallback } from '@shared/ui/components/avatar';
-import { Badge } from '@shared/ui/components/badge';
-import { Button, buttonVariants } from '@shared/ui/components/button';
-import { Separator } from '@shared/ui/components/separator';
-import { Skeleton } from '@shared/ui/components/skeleton';
-import { Spinner } from '@shared/ui/components/spinner';
-import { Textarea } from '@shared/ui/components/textarea';
+} from '../shared-ui/components/alert';
+import { Avatar, AvatarFallback } from '../shared-ui/components/avatar';
+import { Badge } from '../shared-ui/components/badge';
+import { Button, buttonVariants } from '../shared-ui/components/button';
+import { Separator } from '../shared-ui/components/separator';
+import { Skeleton } from '../shared-ui/components/skeleton';
+import { Spinner } from '../shared-ui/components/spinner';
+import { Textarea } from '../shared-ui/components/textarea';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import {
   CircleAlertIcon,
