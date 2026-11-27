@@ -1,7 +1,7 @@
 'use client';
 
-import { Badge } from '@shared/ui/components/badge';
-import { buttonVariants } from '@shared/ui/components/button';
+import { Badge } from '../../shared-ui/components/badge';
+import { buttonVariants } from '../../shared-ui/components/button';
 import {
   Card,
   CardAction,
@@ -10,9 +10,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@shared/ui/components/card';
-import { Skeleton } from '@shared/ui/components/skeleton';
-import { Spinner } from '@shared/ui/components/spinner';
+} from '../../shared-ui/components/card';
+import { Skeleton } from '../../shared-ui/components/skeleton';
+import { Spinner } from '../../shared-ui/components/spinner';
 import { ArrowLeftIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
